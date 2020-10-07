@@ -3,11 +3,18 @@ html {
     color: #222;
 }
 
+body {
+    margin: 0;
+    padding: 32px 0;
+}
+
 main > *:not(.huge-spacer):not(img):not(picture):not(.custom-class-here) {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 720px;
+    max-width: 700px;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 main > img,
@@ -17,6 +24,22 @@ main> .custom-class-here {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+.btn {
+    background-image: repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),repeating-linear-gradient(22.5deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),linear-gradient(90deg, hsl(194,74%,56%),hsl(266,74%,56%),hsl(338,74%,56%),hsl(50,74%,56%),hsl(122,74%,56%));
+    border-radius: 8px;
+    color: #eee;
+    display: inline-flex;
+    padding: 16px 24px;
+    text-decoration: none;
+    transition-duration: 300ms;
+    transition-property: transform;
+}
+
+.btn:hover,
+.btn:focus {
+    transform: scale(1.1);
 }
 
 .huge-spacer {
@@ -29,6 +52,7 @@ main> .custom-class-here {
     height: 3000px;
     text-align: center;
     padding-bottom: 40px;
+    padding-left: 32px;
     position: relative;
 }
 
@@ -73,10 +97,15 @@ main> .custom-class-here {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: 90%;
+}
+
+h2, h3 {
+    margin-top: 3em;
 }
 
 .code-block {
-    background-color: #111;
+    background-image: repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),repeating-linear-gradient(22.5deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),linear-gradient(90deg, hsl(194,74%,56%),hsl(266,74%,56%),hsl(338,74%,56%),hsl(50,74%,56%),hsl(122,74%,56%));
     color: #eee;
     margin-top: 1em;
     padding-left: 1em;
@@ -102,6 +131,10 @@ img {
 
 .lazy-bg {
     background-image: none !important;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .link-to-outfit:hover path,

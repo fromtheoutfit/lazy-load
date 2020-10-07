@@ -7,7 +7,7 @@ If lazy loading is [natively supported already](https://caniuse.com/loading-lazy
 https://theoutfit-lazyload.netlify.app/
 
 ## How to Implement
-1. Install it: <kbd>npm i @theoutfit/lazyload --save</kbd>
+1. Install it: <code>npm i @theoutfit/lazyload --save</code>
 2. Call it: <code>lazyload()</code>
 3. Adjust your code:
    * change every <code>src</code> attribute to <code>data-lazy-src</code>
