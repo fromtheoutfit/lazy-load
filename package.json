@@ -1,6 +1,6 @@
 {
   "name": "@theoutfit/lazyload",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "This fills a few gaps in image lazy-loading support; it covers the various ways you can use <img> elements, <picture> elements, and CSS background images … but it gets out of the way if the environment natively supports lazy-loading.",
   "main": "dist/lazyload.min.js",
   "scripts": {
