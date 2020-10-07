@@ -1,0 +1,110 @@
+html {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    color: #222;
+}
+
+main > *:not(.huge-spacer):not(img):not(picture):not(.custom-class-here) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+}
+
+main > img,
+main > picture,
+main> .custom-class-here {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.huge-spacer {
+    background: linear-gradient(135deg, #fff 25%, transparent 25%) -50px 0,
+                linear-gradient(225deg, #fff 25%, transparent 25%) -50px 0,
+                linear-gradient(315deg, #fff 25%, transparent 25%),
+                linear-gradient(45deg, #fff 25%, transparent 25%);
+    background-color: #f7f7f7;
+    background-size: 100px 100px;
+    height: 3000px;
+    text-align: center;
+    padding-bottom: 40px;
+    position: relative;
+}
+
+.huge-spacer__animation {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: scroll-down-tip;
+    animation-timing-function: ease-in-out;
+    left: 0;
+    position: sticky;
+    text-align: left;
+    top: 0;
+}
+
+@keyframes scroll-down-tip {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+    95% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+}
+
+.huge-spacer__text {
+    font-size: 150%;
+    font-weight: 900;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.code-block {
+    background-color: #111;
+    color: #eee;
+    margin-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.overflow-scroll {
+    max-width: 100%;
+    overflow: auto;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+.custom-class-here {
+    background-image: url('css-background-image.jpg');
+    height: 576px;
+    max-width: 100%;
+    width: 768px;
+}
+
+.lazy-bg {
+    background-image: none !important;
+}
+
+.link-to-outfit:hover path,
+.link-to-outfit:focus path {
+    fill: rgba(0,0,0,.325);
+}

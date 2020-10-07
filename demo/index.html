@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.CSS">
+    <title>lazyload: a polyfill for lazy loading &lt;img&gt;, &lt;picture&gt;, and CSS background images</title>
+  </head>
+  <body>
+    <main>
+
+      <h1>lazyload</h1>
+      <p>lazyload is a little bit of JavaScript (826 bytes) that tries to polyfill lazy loading support for <code>&lt;img&gt;</code> elements, <code>&lt;picture&gt;</code> elements, and CSS background images.</p>
+      <p>If lazy loading is <a href="https://caniuse.com/loading-lazy-attr">natively supported already</a>, lazyload will know and get out of the way.</p>
+      <p><a href="https://github.com/fromtheoutfit/lazyload">lazyload on GitHub</a></p>
+
+      <h2>Demo</h2>
+      <p>To best demonstrate how images lazy load, they need to be <em>very</em> far away from the bottom-edge of your browser’s viewport, so … start scrolling (please, and thank you).</p>
+      <p>Oh, also, if you'd like to <em>see</em> them load lazily:</p>
+      <ol>
+        <li>Crack open your browser’s dev tools</li>
+        <li>Choose the <i>Network</i> tab</li>
+        <li>(optional, but nice) Filter by <i>Img</i>/<i>Image(s)</i> to see only images</li>
+        <li>Notice that each image isn’t requested until it’s near the bottom-edge</li>
+      </ol>
+
+      <div aria-hidden="true" class="huge-spacer">
+        <div class="huge-spacer__animation">Scroll <span aria-hidden="true">👇</span></div>
+        <p class="huge-spacer__text">
+          <span aria-hidden="true">🎉</span>
+          You’re halfway there! Keep scrollin’…
+          <span aria-hidden="true">🎉</span>
+        </p>
+      </div>
+
+      <h3>Demo #1: An <code>&lt;img&gt;</code> element with <code>src</code> and <code>srcset</code></h3>
+      <img data-lazy-src="src-srcset-1024x768.jpg"
+           data-lazy-srcset="src-srcset-2048x1536.jpg 2x"
+           loading="lazy" alt="A pretty marsh" width="1024" height="768" />
+      <div class="code-block overflow-scroll">
+        <pre><code>&lt;img data-lazy-src="src-srcset-1024x768.jpg"
+     data-lazy-srcset="src-srcset-2048x1536.jpg 2x"
+     loading="lazy" alt="A pretty marsh" width="1024" height="768" /&gt;</code></pre>
+      </div>
+
+      <h3>Demo #2: An <code>&lt;img&gt;</code> element with <code>src</code>, <code>srcset</code>, and <code>sizes</code></h3>
+      <img data-lazy-src="src-srcset-sizes-512x384.jpg"
+           data-lazy-srcset="src-srcset-sizes-1024x768.jpg 1024w,
+                            src-srcset-sizes-1536x1152.jpg 1536w,
+                            src-srcset-sizes-2048x1536.jpg 2048w"
+           sizes="100vw" loading="lazy" alt="A pretty marsh" />
+      <div class="code-block overflow-scroll">
+        <pre><code>&lt;img data-lazy-src="src-srcset-sizes-512x384.jpg"
+     data-lazy-srcset="src-srcset-sizes-1024x768.jpg 1024w,
+                       src-srcset-sizes-1536x1152.jpg 1536w,
+                       src-srcset-sizes-2048x1536.jpg 2048w"
+     sizes="100vw" loading="lazy" alt="A pretty marsh" /&gt;</code></pre>
+      </div>
+      <h3>Demo #3: A <code>&lt;picture&gt;</code> element with <code>src</code> and <code>srcset</code></h3>
+      <picture>
+        <source data-lazy-srcset="picture-1024x768.jpg,
+                                  picture-2048x1536.jpg 2x"
+                media="(min-width:768px)">
+        <img data-lazy-src="picture-768x576.jpg"
+             data-lazy-srcset="picture-1536x1152.jpg 2x"
+             loading="lazy" alt="A pretty marsh" />
+      </picture>
+      <div class="code-block overflow-scroll">
+        <pre><code>&lt;picture&gt;
+  &lt;source data-lazy-srcset="picture-1024x768.jpg,
+                            picture-2048x1536.jpg 2x"
+          media="(min-width:768px)"&gt;
+  &lt;img data-lazy-src="picture-768x576.jpg"
+       data-lazy-srcset="picture-1536x1152.jpg 2x"
+       loading="lazy" alt="A pretty marsh" /&gt;
+&lt;/picture&gt;</code></pre>
+      </div>
+
+      <h3>A CSS <code>background-image</code></h3>
+      <div class="custom-class-here lazy-bg"></div>
+      <div class="code-block overflow-scroll">
+        <pre><code>&lt;!-- HTML: --&gt;
+&lt;div class="custom-class-here lazy-bg"&gt;&lt;/div&gt;
+
+/* CSS: */
+.lazy-bg {
+  background-image: none !important;
+}</code></pre>
+      </div>
+
+      <h2>Add lazyload to your project</h2>
+      <ol>
+        <li>Install it: <kbd>npm i @theoutfit/lazyload --save</kbd></li>
+        <li>Call it: <code>lazyload()</code></li>
+        <li>Adjust your code:
+          <ul>
+            <li>change every <code>src</code> attribute to <code>data-lazy-src</code></li>
+            <li>change every <code>srcset</code> attribute to <code>data-lazy-srcset</code></li>
+            <li>add a <code>loading="lazy"</code> attribute to every <code>img</code> element</li>
+            <li>add a <code>lazy-bg</code> class to every element with a background-image</li>
+            <li>add this rule to your CSS: <pre><code>.lazy-bg {
+  background-image: none !important;
+}</code></pre></li>
+          </ul>
+        </li>
+      </ol>
+      <p><a href="https://github.com/fromtheoutfit/lazyload/#readme">Learn more</a></p>
+
+      <h2>Questions / Issues / Improvements</h2>
+      <p>If you have any questions, if you’ve discovered an issue, or if you can think of any improvements, please let us know:</p>
+      <p><a href="https://github.com/fromtheoutfit/lazyload/issues">lazyload Issues</a></p>
+
+      <h2>Brought to You By</h2>
+      <p><a href="https://theout.fit/" class="link-to-outfit" aria-label="The Outfit"><svg width="212" height="32" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M25.588 19.35c1.912-1.106 2.616-3.722 1.51-5.633-1.107-1.912-3.723-2.616-5.635-1.51-1.911 1.108-2.615 3.723-1.509 5.635 1.107 1.911 3.622 2.716 5.634 1.509M18.948 8.083c1.912-1.106 2.616-3.722 1.51-5.634C19.35.538 16.734-.166 14.823.94c-1.912 1.107-2.616 3.723-1.51 5.634 1.107 2.012 3.622 2.616 5.634 1.51M32.127 30.618c1.912-1.106 2.616-3.722 1.51-5.633-1.107-1.912-3.723-2.616-5.634-1.51-1.912 1.107-2.616 3.723-1.51 5.634 1.107 2.012 3.622 2.616 5.634 1.51" fill="#EA2627"/><path d="M31.926 8.083c1.912-1.106 2.616-3.722 1.51-5.634C32.328.538 29.712-.166 27.8.94c-1.911 1.107-2.615 3.723-1.509 5.634 1.107 1.912 3.622 2.616 5.634 1.51M38.465 19.35c1.912-1.106 2.616-3.722 1.51-5.633-1.107-1.912-3.723-2.616-5.634-1.51-1.912 1.108-2.616 3.723-1.51 5.635 1.208 2.012 3.723 2.615 5.634 1.509" fill="#F79821"/><path d="M40.679.94c-1.912 1.107-2.616 3.723-1.51 5.634 1.107 1.912 3.723 2.616 5.634 1.51 1.912-1.107 2.616-3.723 1.51-5.635A4.018 4.018 0 0 0 40.679.94" fill="#FFCC07"/><path d="M15.025 23.576c-1.912 1.107-2.616 3.722-1.51 5.634 1.107 1.911 3.723 2.616 5.635 1.509 1.911-1.107 2.615-3.722 1.509-5.634-1.208-2.012-3.723-2.716-5.634-1.509M8.385 12.208c-1.911 1.107-2.616 3.722-1.51 5.634 1.108 1.911 3.723 2.615 5.635 1.509 1.911-1.107 2.615-3.723 1.509-5.634-1.107-1.912-3.622-2.616-5.634-1.51" fill="#B82025"/><path d="M7.68 24.985c-1.106-1.912-3.722-2.616-5.633-1.51C.135 24.583-.57 27.199.537 29.11c1.108 1.912 3.723 2.616 5.635 1.51 2.012-1.107 2.615-3.622 1.509-5.634" fill="#0B0204"/><g fill="#0B0204"><path d="M77.902 22.168c1.51-1.61 2.213-3.723 2.213-6.439s-.704-4.829-2.213-6.439c-1.509-1.61-3.42-2.414-5.936-2.414-2.414 0-4.426.805-5.835 2.414-1.509 1.61-2.213 3.723-2.213 6.439s.704 4.829 2.213 6.439c1.51 1.61 3.421 2.414 5.835 2.414 2.516 0 4.528-.805 5.936-2.414M60.9 26.997c-3.018-2.918-4.527-6.74-4.527-11.268 0-4.527 1.509-8.25 4.527-11.268C63.918 1.544 67.64.035 72.067.035s8.149 1.509 11.066 4.426c3.019 2.918 4.528 6.74 4.528 11.268 0 4.527-1.51 8.25-4.528 11.268-3.018 2.917-6.74 4.426-11.066 4.426-4.426 0-8.149-1.408-11.167-4.426" fill-rule="nonzero"/><path d="M92.389 18.647V.337h7.445v18.31c0 1.81.402 3.219 1.308 4.225.905 1.006 2.213 1.509 3.923 1.509s3.119-.503 4.024-1.51c.906-1.005 1.409-2.414 1.409-4.224V.337h7.444v18.31c0 2.716-.603 5.03-1.911 7.042-1.308 1.911-2.817 3.42-4.83 4.326-1.91.905-4.023 1.308-6.337 1.308-3.521 0-6.54-1.107-8.954-3.32-2.314-2.314-3.521-5.433-3.521-9.356M122.268 6.172V.538h24.145v5.634h-8.35v24.95h-7.445V6.171zM150.84 31.121V.538h19.92v5.634h-12.476v6.539h9.357v5.734h-9.357v12.676zM175.89.538h7.445v30.584h-7.445zM187.761 6.172V.538h24.145v5.634h-8.35v24.95h-7.445V6.171z"/></g></g></svg></a></p>
+
+    </main>
+    <script src="lazyload.min.js"></script>
+    <script>
+        lazyload()
+    </script>
+  </body>
+</html>
